@@ -1,0 +1,112 @@
+.doctor-categories {
+    width: 100%;
+    min-height: 20vh;
+    box-sizing: border-box;
+    padding: 20px 50px;
+    background: #eee;
+    margin-bottom: 30px;
+    position: relative;
+
+    h3 {
+        text-align: center;
+        color:rgb(0, 112, 43);
+        font-size: 35px;
+        margin: 10px 0 15px 0;
+    }
+    .more {
+        position: absolute;
+        right: 80px;
+        top: 40px;
+        border: none;
+        outline: none;
+        padding: 6px 18px;
+        border-radius: 5px;
+        background: rgb(0, 112, 43);
+        color: #eee;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .categories {
+        padding: 15px 5px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+        
+        .categories-item {
+            width: 250px;
+            height: 290px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+            box-shadow: -1px 4px 18px -11px rgba(0,0,0,0.75);
+            -webkit-box-shadow: -1px 4px 18px -11px rgba(0,0,0,0.75);
+            -moz-box-shadow: -1px 4px 18px -11px rgba(0,0,0,0.75);
+
+            &:hover {
+                margin-top: -3px;
+                background: rgb(0, 112, 43);
+
+                .categories-desc {
+                    p {
+                        color: #fff;
+                    }
+                    small {
+                        color: #eee;
+                    }
+                }
+            }
+
+            .categories-img-box {
+                width: 100%;
+                height: 70%;
+                cursor: pointer;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                }
+                .gradient {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                }
+                &:hover {
+                    .gradient {
+                        display: block;
+                        display: flex;
+                        align-items: center;
+                        color: #eee;
+                        justify-content: center;
+                        background-image: linear-gradient(to bottom right, rgb(53, 53, 53, .8), rgb(70, 70, 70, .8));
+                    }
+                }
+
+            }
+            .categories-desc {
+                width: 100%;
+                height: 25%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    font-size: 20px;
+                    color: rgb(0, 112, 43);
+                    padding: 10px 0;
+                    font-weight: 600;
+                }
+                small {
+                    color: gray;
+                }
+            }
+        }
+    }
+}
