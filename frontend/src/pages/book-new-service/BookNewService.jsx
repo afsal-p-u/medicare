@@ -1,6 +1,26 @@
+import { useState } from 'react'
+import axios from 'axios'
+
 import './BookNewService.scss'
 
 const BookNewService = () => {
+  const [inputs, setInputs] = useState({})
+
+  const handleChange = (e) => {
+    setInputs(prev => {
+      return {...prev, [e.target.name]: e.target.value}
+    })
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    axios.post(`${import.meta.env.VITE_SERVER_URL}/services/new`, inputs).then((res) => {
+      console.log(res.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
     <div className='book-new-service'>
       <div className="form">
@@ -8,49 +28,50 @@ const BookNewService = () => {
         <div className="items">
           <div className="list">
             <label htmlFor="">Full Name</label>
-            <input placeholder='Full name' type="text" />
+            <input placeholder='Full name' type="text" name='fullname' onChange={handleChange} />
           </div>
           <div className="list">
             <label htmlFor="">Age</label>
-            <input placeholder='Age' type="number" />
+            <input placeholder='Age' type="number" name='age' onChange={handleChange} />
           </div>
           <div className="list">
             <label htmlFor="">Contact Number</label>
-            <input placeholder='Phone Number' type="number" />
+            <input placeholder='Phone Number' type="number" name='contact' onChange={handleChange} />
           </div>
           <div className="list">
-            <label htmlFor="">Location/Address</label>
-            <input placeholder='Location' type="text" />
+            <label htmlFor="">Address</label>
+            <input placeholder='Address' type="text" name='address' onChange={handleChange} />
           </div>
           <div className="list">
             <label htmlFor="">Category</label>
-            <select name="" id="">
-              <option value="">Gastroenterologists</option>
-              <option value="">Dermatologists</option>
-              <option value="">Anesthesiologists</option>
-              <option value="">Cardiologists</option>
+            <select name="category" id="" onChange={handleChange}>
+              <option value="gastroenterologists">Gastroenterologists</option>
+              <option value="dermatologists">Dermatologists</option>
+              <option value="anesthesiologists">Anesthesiologists</option>
+              <option value="cardiologists">Cardiologists</option>
             </select>
           </div>
           <div className="list">
-            <label htmlFor="">Choose Doctor (optional)</label>
-            <select name="" id="">
-              <option value="">Thomas Shelby</option>
+            <label htmlFor="">City</label>
+            <select name="city" id="" onChange={handleChange}>
+              <option value="balmatta">Balmatta</option>
+              <option value="deralakatta">Deralakatta</option>
             </select>
           </div>
           <div className="list area">
             <label htmlFor="">Describe</label>
-            <textarea placeholder='Describe your problem'></textarea>
+            <textarea name='describe' placeholder='Describe your problem' onChange={handleChange}></textarea>
           </div>
           <div className="list">
             <label htmlFor="">Gender</label>
             <div className="list-gender">
-              <input type="radio" /><span>Male</span>
-              <input type="radio" /><span>Female</span>
+              <input type="radio" value="male" name='gender' onChange={handleChange}/><span>Male</span>
+              <input type="radio" value="female" name='gender' onChange={handleChange}/><span>Female</span>
             </div>
           </div>
         </div>
         <div className="buttons">
-          <button>Submit</button>
+          <button onClick={handleClick}>Submit</button>
         </div>
       </div>
     </div>
