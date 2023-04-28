@@ -1,0 +1,45 @@
+.all-services {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px 30px;
+
+    .services-container {
+        h3 {
+            text-align: center;
+        }
+        .add-new-services {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        .services-lists {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .services-list {
+                margin: 0 auto;
+                padding: 5px 10px;
+                background: #eee;
+                width: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .list-services-info {
+
+                }
+                .list-services-buttons {
+                    button {
+                        padding: 5px 15px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

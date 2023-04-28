@@ -1,0 +1,39 @@
+.all-orders {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 5px 20px;
+
+    .orders-box {
+        margin: 0 auto;
+        width: 80%;
+
+        h3 {
+            text-align: center;
+            padding: 20px 0px;
+        }
+        .list-orders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+
+            .order-list {
+                width: 450px;
+                background: #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 15px;
+                border-radius: 5px;
+
+                .order-list-buttons {
+                    button {
+                        margin-right: 5px;
+                        padding: 5px 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+} 

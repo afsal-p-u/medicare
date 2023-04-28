@@ -9,7 +9,8 @@ const ServicesSchema = new mongoose.Schema({
     city: {type: String, required: true},
     describe: {type: String, required: true},
     gender: {type: String, required: true},
-    // status: {type: String, default: "pending"} 
+    status: {type: String, default: "pending"},
+    result: {type: String},
 })
 
 module.exports = mongoose.model("services", ServicesSchema)

@@ -1,49 +1,65 @@
+import axios from 'axios'
+
 import './CurrentService.scss'
+import { useEffect, useState } from 'react'
 
 const CurrentService = () => {
+  const [currentData, setCurrentData] = useState(null)
+
+  useEffect(() => {
+    const getCurrentService = () => {
+      axios.get(`${import.meta.env.VITE_SERVER_URL}/services/current`).then((res) => {
+        setCurrentData(res.data)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+    getCurrentService()
+  }, [])
+
   return (
     <div className='current-service'>
       <h3>Current Service</h3>
       <div className="c-s-lists">
         <div className="c-s-l-item">
           <small>ID:</small>
-          <p>234234hkh</p>
+          <p>{currentData?._id}</p>
         </div>
         <div className="c-s-l-item">
           <small>Name:</small>
-          <p>Abubakar</p>
+          <p>{currentData?.fullname}</p>
         </div>
         <div className="c-s-l-item">
           <small>Contact No:</small>
-          <p>555 5555 555</p>
+          <p>{currentData?.contact}</p>
         </div>
         <div className="c-s-l-item">
           <small>Age:</small>
-          <p>25</p>
+          <p>{currentData?.age}</p>
         </div>
         <div className="c-s-l-item">
           <small>Address:</small>
-          <p>Morgan's Gate, 575001, flat 504, room 134</p>
+          <p>{currentData?.address}</p>
         </div>
         <div className="c-s-l-item">
           <small>City:</small>
-          <p>Morgan's Gate</p>
+          <p>{currentData?.city}</p>
         </div>
         <div className="c-s-l-item">
           <small>Category:</small>
-          <p>Dermatologists</p>
+          <p>{currentData?.category}</p>
         </div>
-        <div className="c-s-l-item">
+        {/* <div className="c-s-l-item">
           <small>Doctor:</small>
           <p>Thomas Alva</p>
-        </div>
+        </div> */}
         <div className="c-s-l-item">
           <small>Gender:</small>
-          <p>Male</p>
+          <p>{currentData?.gender}</p>
         </div>
         <div className="c-s-l-item">
           <small>Status:</small>
-          <p className='status'>Pending</p>
+          <p className='status'>{currentData?.status}</p>
         </div>
         <div className="c-s-l-item">
           <small>Arrival Time (estimated) :</small>

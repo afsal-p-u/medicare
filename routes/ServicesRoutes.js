@@ -20,4 +20,22 @@ router.post('/new', async (req, res) => {
     }
 })
 
+// get pending services
+router.get('/current', async (req, res) => {
+    const current = await Services.findOne({status: "pending"})
+    return res.status(200).json(current)
+})
+
+// get all completed services
+router.get('/completed', async (req, res) => {
+    const completedList = await Services.find({status: "completed"})
+    return res.status(200).json(completedList)
+})
+
+// get all orders (admin)
+router.get('/all-orders', async (req, res) => {
+    const allOrders = await Services.find()
+    return res.status(200).json(allOrders)
+})
+
 module.exports = router
