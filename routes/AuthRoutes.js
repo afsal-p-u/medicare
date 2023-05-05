@@ -61,8 +61,8 @@ router.post('/login', async (req, res) => {
         return res.status(500).json(err)
     }
 })
-
-// admin login
+ 
+// admin login  
 router.post('/admin-login', async (req, res) => {
     const user = await User.findOne({email: req.body.email})
     if (!user) {

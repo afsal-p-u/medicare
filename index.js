@@ -6,6 +6,8 @@ const db = require('./db')
 
 const authRoutes = require('./routes/AuthRoutes')
 const servicesRoutes = require('./routes/ServicesRoutes')
+const providingServicesRoutes = require('./routes/ProvidingServicesRoutes')
+const doctorRoutes = require('./routes/DoctorsRoutes')
 
 const app = express()
 app.use(cors())
@@ -14,6 +16,8 @@ db()
 
 app.use('/api/auth', authRoutes)
 app.use('/api/services', servicesRoutes)
+app.use('/api/p/service', providingServicesRoutes)
+app.use('/api/doctor', doctorRoutes)
 
 
 const port = 5000 || 8000

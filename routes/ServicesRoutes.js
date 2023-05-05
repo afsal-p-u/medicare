@@ -38,4 +38,10 @@ router.get('/all-orders', async (req, res) => {
     return res.status(200).json(allOrders)
 })
 
+// modify order (admin)
+router.put('/:id', async (req, res) => {
+    const orderItem = await Services.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    return res.status(200).json(orderItem)
+})
+
 module.exports = router

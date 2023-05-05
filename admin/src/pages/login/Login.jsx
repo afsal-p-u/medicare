@@ -1,23 +1,31 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 
 import './login.scss'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 const Login = () => {
   const [inputs, setInputs] = useState(null)
+  const navigate = useNavigate()
+  const {setAdmin} = useContext(AuthContext)
 
   const handleChange = (e) => {
     setInputs(prev => {
-      return {...inputs, [e.target.name]: e.target.value}
+      return {...prev, [e.target.name]: e.target.value}
     })
   }
 
   const handleLogin = (e) => {
     e.preventDefault()
-    axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/admin-login`).then((res))
+    axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/admin-login`, inputs).then((res) => {
+      setAdmin(res.data)
+      navigate('/')
+      
+    }).catch((err) => {
+      console.log(err)
+    })
   }
-
-  console.log(inputs)
 
   return (
     <div className='login'>

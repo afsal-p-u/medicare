@@ -5,6 +5,7 @@ import './History.scss'
 
 const History = () => {
   const [completedData, setCompletedData] = useState(null)
+  const [showResult, setShowResult] = useState(false)
 
   useEffect(() => {
     const getCompletedLists = () => {
@@ -17,8 +18,8 @@ const History = () => {
     getCompletedLists()
   }, [])
 
-  console.log(completedData)
   return (
+    <>
     <div className='history'>
       <h5>History</h5>
       <div className="h-items">
@@ -31,13 +32,22 @@ const History = () => {
 
             <div className="h-i-i-buttons">
               <button>View</button>
-              <button>Result</button>
+              <button onClick={() => setShowResult(item)}>Result</button>
               <button className='delete'>Delete</button>
             </div>
           </div>
         ))}
       </div>
     </div>
+    {showResult && (
+      <div className="result-container">
+          <div className="result-box">{showResult?.result}</div>
+          <div className="result-box-button">
+            <button onClick={() => setShowResult(null)}>Close</button>
+          </div>
+      </div>
+    )}
+    </>
   )
 }
 

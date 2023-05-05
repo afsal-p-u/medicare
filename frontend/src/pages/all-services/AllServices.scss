@@ -1,0 +1,43 @@
+.all-services {
+   width: 100%;
+   min-height: 100vh;
+   box-sizing: border-box;
+   padding: 30px 50px; 
+
+   .services-items {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        
+        
+        .services-item {
+            width: 220px;
+            height: 200px;
+            background-color: #eee;
+            padding: 15px 15px;
+            border-radius: 5px;
+            color: #000;
+            cursor: pointer;
+            transition: all 300ms ease;
+
+            &:hover {
+                margin-top: -2px;
+            }
+
+            .services-item-img {
+                width: 100%;
+                height: 170px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            h3 {
+                margin: 10px 0 20px 0;
+                text-align: center;
+            }
+        }
+   }
+}
